@@ -1,0 +1,45 @@
+package handlingmouseevents;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class DragNDropDemo3 {
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriverManager.chromedriver().setup();
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--remote-allow-origins=*","ignore-certificate-errors");
+		WebDriver driver=new ChromeDriver(chromeOptions);
+		
+		// Open webpage
+				driver.get("https://dhtmlx.com/docs/products/dhtmlxTree/");
+		 
+			
+				// Add 5 seconds wait
+				Thread.sleep(5000);
+				driver.switchTo().frame("content");
+				// Create object of actions class
+				Actions act=new Actions(driver);
+		 
+				// find element which we need to drag
+				WebElement source=driver.findElement(By.xpath("//div[@class='dhx_demo-container__row dhx_demo-container__row--tree']/div[1]/div[1]/div[2]/ul[1]/li[1]/ul[1]/li[1]/div[1]/div[2]/span[1]"));
+				
+				WebElement destination=driver.findElement(By.xpath("//li[normalize-space()='Zend Framework in Action']"));
+				
+				// it will click and hold the triller box and move to element will move cursor to history in another box and then release
+				act.clickAndHold(source).pause(2000).moveToElement(destination).release().build().perform();
+		 
+				Thread.sleep(3000);
+		driver.quit();
+		 
+		
+
+	}
+
+}

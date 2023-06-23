@@ -1,0 +1,11 @@
+2023-03-22 15:48:12,159 [main] INFO Google - Browser Opened
+2023-03-22 15:48:12,183 [main] INFO Google - Implicit wait given
+2023-03-22 15:48:14,787 [main] INFO Google - Url opened
+2023-03-22 15:48:14,942 [main] INFO Google - keyword type
+2023-03-22 15:49:57,973 [main] INFO Google - Browser Loaded
+2023-03-22 15:50:09,628 [main] INFO Google - Browser Loaded
+2023-03-22 15:50:21,224 [main] INFO Google - Browser Loaded
+2023-03-22 15:52:12,952 [main] INFO Example - Browser Opened
+2023-03-22 15:52:12,976 [main] INFO Example - Implicit wait given
+2023-03-22 15:52:15,329 [main] INFO Example - Url opened
+2023-03-22 15:52:15,462 [main] INFO Example - keyword type

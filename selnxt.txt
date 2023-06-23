@@ -1,0 +1,76 @@
+firstName
+lastName
+username
+
+Passwd
+ConfirmPasswd
+
+Checkbox : VfPpkd-muHVFf-bMcfAe
+
+To FInd Next Button :  //button/span[text()='Next']
+
+Mobile :  phoneNumberId
+
+gender-male
+
+FirstName
+
+LastName
+
+Email
+
+Password
+
+ConfirmPassword
+
+register-button
+
+register-continue-button
+
+topic-html-content-header
+
+
+============================================================================================================
+
+
+
+
+
+
+Aui : App under test
+
+Xpath Locators
+
+1) Syntax : //tagname[@attributename = 'value']
+
+ex : //input[@type='text']
+
+2) Multiple Attributes :   //input[@type='text'][@aria-label='First name']
+
+Xpath Axes
+
+1) parent Node ====> Child Node
+
+2) //input[@type='checkbox']following::label
+
+3) //p[text()='vrsec'] ==> for paragraphs
+
+4) //tagname[contains@atrribute='value']
+
+5) //p[contains(text(), 'vrsec']
+
+CSS Selectors
+
+1) tagname[attributename='value']
+   ===> input[type='text']
+
+2) tagname#idname :===> id selectors
+
+3) startswith (^) , Endswith ($), contains (*)
+
+4) input[id^='vrsec'],  input[id$='vrsec'],   input[id*='vrsec']
+
+
+
+
+https://mvnrepository.com/

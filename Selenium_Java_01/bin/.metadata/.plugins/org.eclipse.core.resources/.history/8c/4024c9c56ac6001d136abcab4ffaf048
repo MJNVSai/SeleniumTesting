@@ -1,0 +1,20 @@
+package testng;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class CheckListeners {
+	@Test
+	public void pass()
+	{
+		Assert.assertTrue(true);
+	}
+	
+	@Test
+	public void fail()
+	{
+		Assert.assertTrue(false);
+	}
+	
+
+}

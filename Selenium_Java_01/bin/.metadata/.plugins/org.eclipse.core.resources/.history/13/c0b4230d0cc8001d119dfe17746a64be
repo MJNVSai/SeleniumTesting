@@ -1,0 +1,40 @@
+package testcases;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import pages.LoginPage1;
+
+public class VerifyFacebookLogin1 {
+	
+	@Test
+	public void verifyValidLogin()
+	{
+		
+		WebDriverManager.chromedriver().setup();
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--remote-allow-origins=*","ignore-certificate-errors");
+		WebDriver driver=new ChromeDriver(chromeOptions);
+		 
+		driver.manage().window().maximize();
+		 
+		driver.get("https://www.facebook.com/login.php/");
+		 
+		LoginPage1 login=new LoginPage1(driver);
+		 
+		login.typeUserName();
+		login.typePassword();
+		login.clickOnLoginButton();
+		
+		String actual=driver.findElement(By.xpath("//*[@id='facebook']/body/div[2]/h1")).getText();
+		Assert.assertEquals(actual, "Sorry, something went wrong.");
+		System.out.println("Actual and Expected text is same . Test Case is Passes");
+		driver.quit();
+	}
+
+}

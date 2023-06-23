@@ -1,0 +1,83 @@
+package testcases;
+
+import java.io.IOException;
+
+import org.apache.log4j.Logger;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+
+import library.BrowserFactory;
+import library.XLUtility;
+import logging.Example;
+import pages.RegistrationPage;
+
+public class VerifyFacebookLogin4 {
+	static Logger log = Logger.getLogger(VerifyFacebookLogin4.class.getName());
+	
+	@Test(dataProvider = "Authenticator")
+	public void RegistrationFB(String fname,String lname, String email,String email_cnf, String pass, String day, String month, String year,String gender) throws InterruptedException
+	{
+		
+		ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter("D:\\Report\\sample.html");
+		
+		ExtentReports extent = new ExtentReports();
+		
+		extent.attachReporter(htmlReporter);
+		
+		
+		ExtentTest test = extent.createTest("MyFirstTest");
+		
+		
+		WebDriver driver=BrowserFactory.startBrowser("firefox","https://www.facebook.com/reg/");
+		log.info("Browser Loaded the FB URL");
+		
+		RegistrationPage reg=PageFactory.initElements(driver,RegistrationPage.class);
+		log.info("Registration Page has been Instansiated")
+		
+		reg.regToFacebook(fname,lname,email,email_cnf,pass,day,month,year,gender);
+		
+		Assert.assertTrue(true);
+		
+		test.log(Status.PASS, "pass");
+		
+		extent.flush();
+		driver.quit();
+		
+	}
+	
+	@DataProvider(name="Authenticator")
+	public String[][] Register() throws IOException
+	{
+		String path=".\\TestData\\sample.xlsx";
+		XLUtility utils=new XLUtility(path);
+		int totalrows=utils.getRowCount("Sheet3");		
+		System.out.println(totalrows);
+		int totalcols=utils.getCellCount("Sheet3",1);
+		
+		String loginData[][]=new String[totalrows][totalcols];
+		
+		for(int i=1;i<=totalrows;i++)
+		{
+			for(int j=0;j<totalcols;j++)
+			{
+
+				loginData[i-1][j]=utils.getCellData("Sheet3", i, j);
+			}
+		}
+		
+		
+		
+		return loginData;
+	}
+
+
+  
+}

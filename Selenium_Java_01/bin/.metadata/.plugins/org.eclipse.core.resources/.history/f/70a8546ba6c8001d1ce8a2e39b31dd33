@@ -1,0 +1,19 @@
+package testcases;
+
+import org.testng.annotations.Test;
+
+import library.BaseClass;
+
+public class BaseClassTesting extends BaseClass{
+	
+	@Test(description = "Valid Login Scenario")
+	public void validLogin()
+	{
+		
+	}
+	@Test(description = "Invalid Login Scenario")
+	public void InvalidLogin()
+	{
+		
+	}
+}

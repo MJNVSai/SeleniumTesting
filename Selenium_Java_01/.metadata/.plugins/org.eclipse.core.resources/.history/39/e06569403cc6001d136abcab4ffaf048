@@ -1,0 +1,39 @@
+package actions;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+
+public class AdvancedActions {
+@SuppressWarnings("deprecation")
+public static void main(String[] args) throws InterruptedException {
+	System.setProperty("webdriver.chrome.driver","C:\\Users\\Admin\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--remote-allow-origins=*","ignore-certificate-errors");
+		WebDriver driver=new ChromeDriver(chromeOptions);
+		driver.manage().window().maximize();
+		 
+		driver.get("http://jqueryui.com/resources/demos/droppable/default.html");
+
+		driver.switchTo().frame(0);
+		
+		// Add 5 seconds wait
+		Thread.sleep(5000);
+
+		// Create object of actions class
+		Actions act=new Actions(driver);
+
+		// find element which we need to drag
+		WebElement drag=driver.findElement(By.xpath(".//*[@id='draggable']"));
+		
+		// calling the method and x,y cordinates are random
+		act.dragAndDropBy(drag, 250, 150).build().perform();
+			
+
+}
+}

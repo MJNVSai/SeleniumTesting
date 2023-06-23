@@ -1,0 +1,42 @@
+package library;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Reporter;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+
+public class BaseClass {
+	
+WebDriver driver;
+	
+	@BeforeClass
+	public void setupApplication()
+	{
+		
+		Reporter.log("=====Browser Session Started=====", true);
+		
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\Admin\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--remote-allow-origins=*","ignore-certificate-errors");
+		WebDriver driver=new ChromeDriver(chromeOptions);
+		driver.manage().window().maximize();
+		
+		driver.get("https://www.facebook.com/login.php/");
+		
+		Reporter.log("=====Application Started=====", true);
+	}
+	
+	
+	@AfterClass
+	public void closeApplication()
+	{
+		driver.quit();
+		Reporter.log("=====Browser Session End=====", true);
+		
+	}
+	
+	
+
+}

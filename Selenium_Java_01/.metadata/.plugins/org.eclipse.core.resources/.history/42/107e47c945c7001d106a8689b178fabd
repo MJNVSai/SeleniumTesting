@@ -1,0 +1,10 @@
+package jxl;
+
+public class ReadDataFromXls {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

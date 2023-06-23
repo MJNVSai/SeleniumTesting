@@ -1,0 +1,49 @@
+package testng;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class NewTest3 {
+  @Test
+  public void testcase1() {
+	  System.setProperty("webdriver.chrome.driver","C:\\Users\\Admin\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--remote-allow-origins=*","ignore-certificate-errors");
+		WebDriver driver=new ChromeDriver(chromeOptions);
+		driver.manage().window().maximize();
+		driver.get("https://www.google.com");
+		System.out.println(driver.getTitle());
+		Assert.assertEquals("Google","Google");
+		System.out.println("New Test4 Test Case1");
+		driver.quit();
+  }
+  @Test
+  public void testcase2() {
+	  System.setProperty("webdriver.chrome.driver","C:\\Users\\Admin\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--remote-allow-origins=*","ignore-certificate-errors");
+		WebDriver driver=new ChromeDriver(chromeOptions);
+		driver.manage().window().maximize();
+		driver.get("https://www.facebook.com/");
+		System.out.println(driver.getTitle());
+		Assert.assertEquals("Facebook – log in or sign up","Facebook – log in or sign up");
+		System.out.println("New Test4 Test Case2");
+		driver.quit();
+  }
+  @Test (groups = {"smokeTest"})
+  public void testcase3() {
+	  System.setProperty("webdriver.chrome.driver","C:\\Users\\Admin\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--remote-allow-origins=*","ignore-certificate-errors");
+		WebDriver driver=new ChromeDriver(chromeOptions);
+		driver.manage().window().maximize();
+		driver.get("https://www.youtube.com/");
+		System.out.println(driver.getTitle());
+		Assert.assertEquals("YouTube","YouTube");
+		System.out.println("New Test4 Test Case3");
+		driver.quit();
+  }
+}

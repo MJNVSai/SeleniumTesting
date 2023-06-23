@@ -1,0 +1,50 @@
+package locators;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Assert;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class ClassLocatorDemo {
+
+	public static void main(String[] args) throws Exception {
+		// TODO Auto-generated method stub
+		
+		WebDriverManager.chromedriver().setup();
+		ChromeOptions options=new ChromeOptions();
+		options.addArguments("--remote-allow-origins=*","ignore-certificate-errors");
+		WebDriver driver=new ChromeDriver(options);
+		driver.get("https://demowebshop.tricentis.com/register");
+		driver.manage().window().maximize();
+		driver.findElement(By.id("gender-male")).click();
+		driver.findElement(By.id("FirstName")).sendKeys("Pavan");
+		driver.findElement(By.id("LastName")).sendKeys("Varma");
+		driver.findElement(By.id("Email")).sendKeys("pavan5465RT6@yopmail.com");
+		driver.findElement(By.id("Password")).sendKeys("vrsec12345");
+		driver.findElement(By.id("ConfirmPassword")).sendKeys("vrsec12345");
+		driver.findElement(By.id("register-button")).click();
+		driver.findElement(By.xpath("(//input)[5]")).click();
+		String actual_message= driver.findElement(By.className("topic-html-content-header")).getText();
+		String expected_message="Welcome to our store";
+		System.out.println(actual_message);
+		Assert.assertEquals(actual_message, expected_message);
+		TakesScreenshot ts=(TakesScreenshot) driver;
+		File src= ts.getScreenshotAs(OutputType.FILE);
+		File dest=new File("./Screenshots/pic1.png");
+		FileUtils.copyFile(src, dest);
+		System.out.println("Test Case is Passed");
+		driver.quit();
+
+
+	}
+
+}

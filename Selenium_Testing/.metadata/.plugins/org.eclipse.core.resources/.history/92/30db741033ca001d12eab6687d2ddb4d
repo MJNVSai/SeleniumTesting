@@ -1,0 +1,33 @@
+package locators;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class ClassLocatorDemo 
+{
+
+	public static void main(String[] args) 
+	{
+		WebDriverManager.chromedriver().setup();
+		
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--remote-allow-origins=*","ignore-certificate-errors");
+		WebDriver driver = new ChromeDriver(options);
+		driver.get("https://demowebshop.tricentis.com/register");
+		driver.manage().window().maximize();
+		
+		driver.findElement(By.id("gender-male")).click();
+		driver.findElement(By.id("FirstName")).sendKeys("J N Venkat Sai");
+		driver.findElement(By.id("LastName")).sendKeys("Motamarri");
+		driver.findElement(By.id("Email")).sendKeys("208w1a1291@vrsec.ac.in");
+		driver.findElement(By.id("Password")).sendKeys("itlab@123#");
+		driver.findElement(By.id("ConfirmPassword")).sendKeys("itlab@123#");
+		driver.findElement(By.id("register-button")).click();
+
+	}
+
+}

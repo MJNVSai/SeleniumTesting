@@ -1,0 +1,44 @@
+package locators;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class CSSLocators {
+
+	public static void main(String[] args) throws Exception {
+		
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\Admin\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--remote-allow-origins=*","ignore-certificate-errors");
+		WebDriver driver=new ChromeDriver(chromeOptions);
+		driver.manage().window().maximize();
+		driver.get("https://demoqa.com/automation-practice-form");
+		driver.findElement(By.cssSelector("input[id='firstName']")).sendKeys("Vamsi");
+		driver.findElement(By.cssSelector("input#lastName")).sendKeys("Vamsi");
+		driver.findElement(By.cssSelector("input#userEmail")).sendKeys("vamsi1903@yopmail.com");
+		((JavascriptExecutor)driver).executeScript("arguments[0].click();", driver.findElement(By.cssSelector("input[value='Male']")));
+		
+		driver.findElement(By.cssSelector("input#userNumber")).sendKeys("9121795499");
+		List<WebElement> l= driver.findElements(By.xpath("//div[@class='react-datepicker__month']/div[@class='react-datepicker__week']/div"));
+		for(WebElement e:l)
+		{
+			System.out.println(e);
+		}
+		
+		driver.findElement(By.cssSelector("input#dateOfBirthInput")).clear();
+		driver.findElement(By.cssSelector("input#dateOfBirthInput")).sendKeys("03 Jan 2000");
+		driver.findElement(By.xpath("(//input[@class='text-box single-line'])[1]")).sendKeys("Randon First Name");
+		driver.findElement(By.xpath("(//input[@class='text-box single-line'])[2]")).sendKeys("Randon Last Name");
+		driver.findElement(By.id("Email")).sendKeys("random1807@yopmail.com");
+		driver.findElement(By.id("Password")).sendKeys("VRSEC@5544");
+		driver.findElement(By.id("ConfirmPassword")).sendKeys("VRSEC@5544");
+	}
+
+}

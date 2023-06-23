@@ -1,0 +1,45 @@
+package actions;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class AdvancedActions2 {
+public static void main(String[] args) throws InterruptedException {
+		
+		WebDriverManager.chromedriver().setup();
+		
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.addArguments("--remote-allow-origins=*","ignore-certificate-errors");
+		WebDriver driver=new ChromeDriver(chromeOptions);
+		driver.manage().window().maximize();
+		 
+			driver.get("https://www.naukri.com/");
+			driver.manage().window().maximize();
+			Actions act=new Actions(driver);
+			//act.contextClick(driver.findElement(By.linkText("తెలుగు"))).perform();
+			//act.doubleClick(driver.findElement(By.linkText("తెలుగు"))).perform();
+			
+			driver.findElement(By.xpath("//div[@class='qsb']/div[@class='keywordSugg']/div/div/div/input")).sendKeys("test");
+			// find the element which we want to Select from auto suggestion
+			WebElement ele=driver.findElement(By.xpath("//div[@class='qsb']/div[@class='keywordSugg']/div/div/div[2]/div/ul/li/div[@title='Test Engineer']/span[1]/b"));
+			// use Mouse hover action for that element
+			act.moveToElement(ele).build().perform();
+
+			// Give wait for 2 seconds 
+			Thread.sleep(4000);
+
+			// finally click on that element
+			act.click(ele).build().perform();
+
+			//div[@class='qsb']/div[@class='keywordSugg']/div/div/div/input
+			//div[@class='qsb']/div[@class='keywordSugg']/div/div/div[2]/div/ul/li/div[@title='testing']
+			
+}
+}

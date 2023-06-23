@@ -1,0 +1,10 @@
+package browserinitationwithwdm;
+
+public class EdgeInitation {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
